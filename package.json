@@ -1,0 +1,43 @@
+{
+	"name": "uglifyjs-middleware",
+	"version": "v0.0.1",
+	"description": "UglifyJS Middleware for connect.",
+	"keywords": [
+		"minify",
+		"uglifyjs",
+		"uglifyjs2",
+		"middleware",
+		"connect",
+		"express"
+	],
+	"bugs": "http://github.com/bfrohs/UglifyJS-middleware/issues",
+	"licenses": [
+		{
+			"type": "Creative Commons Attribution 3.0 Unported License",
+			"url": "http://github.com/bfrohs/UglifyJS-middleware/blob/master/LICENSE"
+		}
+	],
+	"author": {
+		"name": "Brandon Frohs",
+		"email": "bfrohs@gmail.com",
+		"url": "https://twitter.com/bfrohs"
+	},
+	"main": "./lib/middleware.js",
+	"directories": {
+		"lib": "./lib"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/bfrohs/UglifyJS-middleware.git"
+	},
+	"dependencies": {
+		"uglify-js": "*"
+	},
+	"devDependencies": {
+		"mocha": "*",
+		"supertest": "*",
+		"temp": "*",
+		"connect": "*",
+		"express": "*"
+	}
+}
