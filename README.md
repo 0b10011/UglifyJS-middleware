@@ -4,7 +4,9 @@ The no-thought-necessary JavaScript minification middleware for connect and expr
 
 # Usage
 
-Include UglifyJS-middleware in your application ([available on npm](https://npmjs.org/package/uglifyjs-middleware)), add some JavaScript to a `*.js` file, and include `*.min.js` in your HTML. 
+Include UglifyJS-middleware in your application ([available on npm](https://npmjs.org/package/uglifyjs-middleware)), add some JavaScript to a `*.js` file, and include `*.min.js` in your HTML.
+
+If the `generateSourceMap` option is set to `true`, a [source map](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) will be generated at `*.map.js` and linked to from `*.js`. *To use the source map in Chrome, make sure you have source maps enabled (dev tool settings > Sources > Enable source maps).*
 
 ## Connect
 
@@ -13,7 +15,9 @@ Include UglifyJS-middleware in your application ([available on npm](https://npmj
 		;
 	
 	var app = connect()
-		.use(uglifyMiddleware(__dirname + "/public"))
+		.use(uglifyMiddleware(__dirname + "/public", {
+			generateSourceMap: true
+		}))
 		.use(connect.static(__dirname + "/public"))
 		.use(function(req, res) {
 			res.statusCode = 404;
@@ -34,7 +38,9 @@ Include UglifyJS-middleware in your application ([available on npm](https://npmj
 	var app = express.createServer();
 	
 	app.configure(function () {
-		app.use(uglifyMiddleware(__dirname + "/public"));
+		app.use(uglifyMiddleware(__dirname + "/public", {
+			generateSourceMap: true
+		}));
 		app.use(express.static(__dirname + "/public"));
 		app.use(function(req, res) {
 			res.statusCode = 404;

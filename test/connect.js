@@ -18,6 +18,7 @@ temp.dir = __dirname;
 var tempDir
 	, tempFileFull = "/tmp.js"
 	, tempFileMin = "/tmp.min.js"
+	, tempFileMap = "/tmp.map.js"
 	;
 
 var connect = require("connect")
@@ -41,7 +42,9 @@ before(function(done) {
 		tempDir = dirPath;
 		
 		app = connect()
-			.use(uglifyMiddleware(tempDir))
+			.use(uglifyMiddleware(tempDir, {
+				generateSourceMap: true
+			}))
 			.use(connect.static(tempDir))
 			.use(function(req, res) {
 				res.statusCode = 404;
@@ -77,7 +80,9 @@ after(function(done) {
 	
 	remove(path.join(tempDir, tempFileMin), function() {
 		remove(path.join(tempDir, tempFileFull), function() {
-			fs.rmdir(tempDir, done);
+			remove(path.join(tempDir, tempFileMap), function() {
+				fs.rmdir(tempDir, done);
+			});
 		});
 	});
 });
@@ -123,7 +128,28 @@ describe("Connect", function() {
 				.set("accept", "application/javascript")
 				.expect(200)
 				.expect("content-type", /application\/javascript/)
-				.expect(scriptOut)
+				.expect(scriptOut + "\n//@ sourceMappingURL=" + tempFileMap)
+				.end(done);
+		};
+		
+		setup();
+	});
+	
+	it("should automatically create a source map", function(done) {
+		
+		var setup = function() {
+			fs.writeFile(path.join(tempDir, tempFileFull), scriptIn, testRequest);
+		};
+		
+		var testRequest = function(err) {
+			if (err) {
+				throw(err);
+			}
+			
+			request.get(tempFileMap)
+				.set("accept", "application/javascript")
+				.expect(200)
+				.expect("content-type", /application\/javascript/)
 				.end(done);
 		};
 		

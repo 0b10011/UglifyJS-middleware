@@ -1,6 +1,6 @@
 {
 	"name": "uglifyjs-middleware",
-	"version": "v0.0.3",
+	"version": "v0.0.4",
 	"description": "UglifyJS Middleware for connect.",
 	"keywords": [
 		"minify",
@@ -34,7 +34,7 @@
 		"test": "mocha test/*"
 	},
 	"dependencies": {
-		"uglify-js": "*"
+		"uglify-js": "git://github.com/bfrohs/UglifyJS2.git#nodeFixes"
 	},
 	"devDependencies": {
 		"mocha": "*",
