@@ -1,6 +1,6 @@
 {
 	"name": "uglifyjs-middleware",
-	"version": "v0.0.4",
+	"version": "v0.0.5",
 	"description": "UglifyJS Middleware for connect.",
 	"keywords": [
 		"minify",
