@@ -1,5 +1,7 @@
 The no-thought-necessary JavaScript minification middleware for connect and express.
 
+[![Build Status](https://travis-ci.org/bfrohs/UglifyJS-middleware.png?branch=master)](https://travis-ci.org/bfrohs/UglifyJS-middleware)
+
 # Usage
 
 Include UglifyJS-middleware in your application ([available on npm](https://npmjs.org/package/uglifyjs-middleware)), add some JavaScript to a `*.js` file, and include `*.min.js` in your HTML. 
