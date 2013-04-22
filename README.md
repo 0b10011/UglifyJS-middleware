@@ -1,6 +1,6 @@
-The no-thought-necessary JavaScript minification middleware for connect and express.
+[![Build Status](https://travis-ci.org/bfrohs/UglifyJS-middleware.png?branch=master)](https://travis-ci.org/bfrohs/UglifyJS-middleware) [![NPM version](https://badge.fury.io/js/uglifyjs-middleware.png)](http://badge.fury.io/js/uglifyjs-middleware)
 
-[![Build Status](https://travis-ci.org/bfrohs/UglifyJS-middleware.png?branch=master)](https://travis-ci.org/bfrohs/UglifyJS-middleware)
+The no-thought-necessary JavaScript minification middleware for connect and express.
 
 # Usage
 
