@@ -11,8 +11,8 @@ Include UglifyJS-middleware in your application ([available on npm](https://npmj
 		;
 	
 	var app = connect()
-		.use(uglifyMiddleware(tempDir))
-		.use(connect.static(tempDir))
+		.use(uglifyMiddleware(__dirname + "/public"))
+		.use(connect.static(__dirname + "/public"))
 		.use(function(req, res) {
 			res.statusCode = 404;
 			res.end("Not found");
