@@ -11,8 +11,8 @@ If the `generateSourceMap` option is set to `true`, a [source map](http://www.ht
 ## Connect
 
 	var connect = require("connect")
-		, uglifyMiddleware = require("uglifyjs-middleware")
-		;
+	  , uglifyMiddleware = require("uglifyjs-middleware")
+	  ;
 	
 	var app = connect()
 		.use(uglifyMiddleware(__dirname + "/public", {
@@ -32,8 +32,8 @@ If the `generateSourceMap` option is set to `true`, a [source map](http://www.ht
 ## Express
 
 	var express = require("express")
-		, uglifyMiddleware = require("uglifyjs-middleware")
-		;
+	  , uglifyMiddleware = require("uglifyjs-middleware")
+	  ;
 	
 	var app = express.createServer();
 	

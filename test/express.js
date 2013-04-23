@@ -3,10 +3,10 @@
  */
 
 var assert = require("assert")
-	, path = require("path")
-	, fs = require("fs")
-	, temp = require("temp")
-	;
+  , path = require("path")
+  , fs = require("fs")
+  , temp = require("temp")
+  ;
 
 /**
  * Setup.
@@ -16,22 +16,22 @@ var assert = require("assert")
 temp.dir = __dirname;
 
 var tempDir
-	, tempFileFull = "/tmp.js"
-	, tempFileMin = "/tmp.min.js"
-	, tempFileMap = "/tmp.map.js"
-	;
+  , tempFileFull = "/tmp.js"
+  , tempFileMin = "/tmp.min.js"
+  , tempFileMap = "/tmp.map.js"
+  ;
 
 var express = require("express")
-	, uglifyMiddleware = require("../lib/middleware")
-	;
+  , uglifyMiddleware = require("../lib/middleware")
+  ;
 
 /**
  * Tests.
  */
 
 var app
-	, request
-	;
+  , request
+  ;
 
 before(function(done) {
 	temp.mkdir("tmp2-", function(err, dirPath) {
