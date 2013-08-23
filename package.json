@@ -1,6 +1,6 @@
 {
 	"name": "uglifyjs-middleware",
-	"version": "v0.0.5",
+	"version": "v1.0.0",
 	"description": "The no-thought-necessary JavaScript minification middleware for connect and express.",
 	"keywords": [
 		"minify",
@@ -13,8 +13,8 @@
 	"bugs": "http://github.com/bfrohs/UglifyJS-middleware/issues",
 	"licenses": [
 		{
-			"type": "Creative Commons Attribution 3.0 Unported License",
-			"url": "http://github.com/bfrohs/UglifyJS-middleware/blob/master/LICENSE"
+			"type": "The MIT License (MIT)",
+			"url": "http://github.com/bfrohs/Proclass/blob/master/LICENSE"
 		}
 	],
 	"author": {
