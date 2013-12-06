@@ -52,3 +52,10 @@ If the `generateSourceMap` option is set to `true`, a [source map](http://www.ht
 			res.end("Internal server error");
 		});
 	});
+
+**Note:** The "mounting" feature of `app.use()` works the same way as it does
+with `express.static()`:
+
+	app.use("/mount", uglifyMiddleware(__dirname + "/public", {
+		generateSourceMap: true
+	}));
