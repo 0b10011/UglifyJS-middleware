@@ -38,9 +38,9 @@ before(function(done) {
 		if (err) {
 			throw(err);
 		}
-		
+
 		tempDir = dirPath;
-		
+
 		app = connect()
 			.use(uglifyMiddleware(tempDir, {
 				generateSourceMap: true
@@ -55,9 +55,9 @@ before(function(done) {
 				res.statusCode = 500;
 				res.end("Internal server error");
 			});
-		
+
 		request = require("supertest")(app);
-		
+
 		done();
 	});
 });
@@ -77,7 +77,7 @@ after(function(done) {
 			}
 		});
 	};
-	
+
 	remove(path.join(tempDir, tempFileMin), function() {
 		remove(path.join(tempDir, tempFileFull), function() {
 			remove(path.join(tempDir, tempFileMap), function() {
@@ -90,18 +90,18 @@ after(function(done) {
 describe("Connect", function() {
 	var scriptIn = "function foo() { }";
 	var scriptOut = "function foo(){}";
-	
+
 	it("should not change the original file", function(done) {
-		
+
 		var setup = function() {
 			fs.writeFile(path.join(tempDir, tempFileFull), scriptIn, testRequest);
 		};
-		
+
 		var testRequest = function(err) {
 			if (err) {
 				throw(err);
 			}
-			
+
 			request.get(tempFileFull)
 				.set("accept", "application/javascript")
 				.expect(200)
@@ -109,21 +109,21 @@ describe("Connect", function() {
 				.expect(scriptIn)
 				.end(done);
 		};
-		
+
 		setup();
 	});
-	
+
 	it("should automatically minify javascript file", function(done) {
-		
+
 		var setup = function() {
 			fs.writeFile(path.join(tempDir, tempFileFull), scriptIn, testRequest);
 		};
-		
+
 		var testRequest = function(err) {
 			if (err) {
 				throw(err);
 			}
-			
+
 			request.get(tempFileMin)
 				.set("accept", "application/javascript")
 				.expect(200)
@@ -131,28 +131,28 @@ describe("Connect", function() {
 				.expect(scriptOut + "\n//@ sourceMappingURL=" + tempFileMap)
 				.end(done);
 		};
-		
+
 		setup();
 	});
-	
+
 	it("should automatically create a source map", function(done) {
-		
+
 		var setup = function() {
 			fs.writeFile(path.join(tempDir, tempFileFull), scriptIn, testRequest);
 		};
-		
+
 		var testRequest = function(err) {
 			if (err) {
 				throw(err);
 			}
-			
+
 			request.get(tempFileMap)
 				.set("accept", "application/javascript")
 				.expect(200)
 				.expect("content-type", /application\/javascript/)
 				.end(done);
 		};
-		
+
 		setup();
 	});
 });
