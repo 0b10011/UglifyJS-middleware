@@ -22,6 +22,7 @@ var tempDir
   ;
 
 var connect = require("connect")
+  , serveStatic = require("serve-static")
   , uglifyMiddleware = require("../lib/middleware")
   ;
 
@@ -45,7 +46,7 @@ before(function(done) {
 			.use(uglifyMiddleware(tempDir, {
 				generateSourceMap: true
 			}))
-			.use(connect.static(tempDir))
+			.use(serveStatic(tempDir))
 			.use(function(req, res) {
 				res.statusCode = 404;
 				res.end("Not found");
@@ -128,7 +129,7 @@ describe("Connect", function() {
 				.set("accept", "application/javascript")
 				.expect(200)
 				.expect("content-type", /application\/javascript/)
-				.expect(scriptOut + "\n//@ sourceMappingURL=" + tempFileMap)
+				.expect(scriptOut + "\n//# sourceMappingURL=" + tempFileMap)
 				.end(done);
 		};
 

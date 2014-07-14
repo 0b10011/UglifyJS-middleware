@@ -43,21 +43,19 @@ before(function(done) {
 
 		app = express();
 
-		app.configure(function () {
-			app.use(uglifyMiddleware(tempDir, {
-				generateSourceMap: true
-			}));
-			app.use(express.static(tempDir));
-			app.use(function(req, res) {
-				res.statusCode = 404;
-				res.end("Not found");
-			});
-			app.use(function(err, req, res, next) {
-				console.error(err);
-				res.statusCode = 500;
-				res.end("Internal server error");
-			});
-		});
+    app.use(uglifyMiddleware(tempDir, {
+      generateSourceMap: true
+    }));
+    app.use(express.static(tempDir));
+    app.use(function(req, res) {
+      res.statusCode = 404;
+      res.end("Not found");
+    });
+    app.use(function(err, req, res, next) {
+      console.error(err);
+      res.statusCode = 500;
+      res.end("Internal server error");
+    });
 
 		request = require("supertest")(app);
 
@@ -131,7 +129,7 @@ describe("Express", function() {
 				.set("accept", "application/javascript")
 				.expect(200)
 				.expect("content-type", /application\/javascript/)
-				.expect(scriptOut + "\n//@ sourceMappingURL=" + tempFileMap)
+				.expect(scriptOut + "\n//# sourceMappingURL=" + tempFileMap)
 				.end(done);
 		};
 
