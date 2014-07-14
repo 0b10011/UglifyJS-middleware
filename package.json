@@ -1,6 +1,6 @@
 {
 	"name": "uglifyjs-middleware",
-	"version": "v1.1.0",
+	"version": "v1.1.1",
 	"description": "The no-thought-necessary JavaScript minification middleware for connect and express.",
 	"keywords": [
 		"minify",
@@ -37,14 +37,14 @@
 		"uglify-js": "git://github.com/bfrohs/UglifyJS2.git#nodeFixes"
 	},
 	"devDependencies": {
-		"mocha": "*",
-		"supertest": "*",
-		"temp": "*",
-		"connect": "*",
-		"express": "*",
+		"mocha": "^1.20.1",
+		"supertest": "^0.13.0",
+		"temp": "^0.8.0",
+		"connect": "^3.0.2",
+		"express": "^4.6.1",
 		"serve-static": "^1.3.2"
 	},
 	"engines": {
-		"node": ">=0.8.0"
+		"node": ">=0.10.0"
 	}
 }
