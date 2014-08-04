@@ -1,6 +1,6 @@
 {
 	"name": "uglifyjs-middleware",
-	"version": "v1.1.2",
+	"version": "v1.1.3",
 	"description": "The no-thought-necessary JavaScript minification middleware for connect and express.",
 	"keywords": [
 		"minify",

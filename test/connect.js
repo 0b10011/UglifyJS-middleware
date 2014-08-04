@@ -151,6 +151,7 @@ describe("Connect", function() {
 				.set("accept", "application/javascript")
 				.expect(200)
 				.expect("content-type", /application\/javascript/)
+				.expect(/^\{"version":3,"file":"\/tmp\.map\.js","sources":\["\/tmp\.js"\],"names":\["foo"\],"mappings":"AAAA,QAASA"\}$/)
 				.end(done);
 		};
 
